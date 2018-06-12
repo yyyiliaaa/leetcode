@@ -1,0 +1,43 @@
+// uses c++ and the time complexity is O(MN)
+class Solution {
+public:
+    int numJewelsInStones(string J, string S) {
+        int a=J.length();
+        int b=S.length();
+        int x=0;
+        for(int i=0; i<a; i++){
+            char m=J[i];
+            for(int j=0; j<b; j++){
+                if(S[j]==m) x++;
+            }
+        }
+        return x;
+    }
+};//O(mn)
+
+//uses hash set and it's O(1) to check if it contains an element.
+//So the total time complexity will be O(M+N), instead of O(MN).uses Java
+class Solution {
+    public int numJewelsInStones(String J, String S) {
+        int res=0;
+        HashSet setJ= new HashSet();
+        for(char j: J.toCharArray()) setJ.add(j);
+        for(char s: S.toCharArray()) if (setJ.contains(s)) res++;
+        return res;
+    }
+}
+// aware of the use of for-each& String to Array& HashSet
+//for-each: for(元素类型type 元素变量value: 遍历对象object) the type of value should be same with object.
+/*eg: 
+  int[] integers = {1， 2， 3， 4};
+  for (int i : integers) {
+     System.out.println(i); /* 依次输出“1”、“2”、“3”、“4” */
+  }
+equals to
+ int[] integers = {1， 2， 3， 4};
+ for (int 变量名甲 = 0; 变量名甲 < integers.length; 变量名甲++) {
+     System.out.println(integers[变量名甲]); /* 依次输出“1”、“2”、“3”、“4” */
+ }*/
+ 
+// mistakes: if(true of false) *uses()
+//			 String.toCharArray() *remember the ()
