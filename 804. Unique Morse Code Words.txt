@@ -1,0 +1,43 @@
+//uses java& for-each &HashSet
+/*more for HashSet:
+1、add(E e)
+2、remove(Object o)
+3、contains(Object o)
+4、hashset.size()*/
+/*bugs: array has the character length. So just use Type[].length. For String, use str.length()
+		defination & assingment in java 
+		  String[] s= new String[];String[] s= {"abc","ad","df"};
+		to transform Tpye
+		  eg:System.out.print(a+0); char to int(a is char)
+		     char c=(char) i; int to char(i is int)
+		Set uses one variable to store different types. So Hashset<Type> h= new Hashset<>(); not Hashset[] h
+		declare the Tpye before use a variable.
+*/
+
+class Solution {
+    public int uniqueMorseRepresentations(String[] words) {
+        String[] m= new String[]{".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        int l= words.length;
+        String[] s= new String [l];
+        for(int i=0; i<l; i++){
+            char myChar[]= words[i].toCharArray();
+            for(char c: myChar){
+                s[i]=s[i]+ m[c+0-97];
+            }
+        }
+        HashSet <String> h= new HashSet<String>();
+        for(String x: s){
+            h.add(x);
+        }
+        return h.size();
+    }
+}
+//or a better use of for-each only list the for-each. remember a += i��not =+
+//and the use of c-'a'
+		for(String word: words){
+			String code="";
+			for(char c: word.toCharArray()){
+				code += m[c-'a'];
+				h.add(code);
+			}
+		}
